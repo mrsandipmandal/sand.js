@@ -36,4 +36,3 @@ Add interactivity directly in HTML using `s-` directives. Small, audit-friendly,
     <span s-bind="textContent: count"></span>
 </div>
 
-npm set //registry.npmjs.org/:_authToken="REMOVEDX3gV5MBrw6yFTtN0HfHBc4fbXTsXlB3dgBb0"
