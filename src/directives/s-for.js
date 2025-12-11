@@ -1,1 +1,3 @@
-// s-for handled by runtime
+export default function sFor() {
+  // keep your existing implementation
+}
