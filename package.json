@@ -1,9 +1,10 @@
 {
   "name": "sand.js",
   "version": "0.1.0",
+  "type": "module",
   "description": "Tiny HTML-driven reactive framework",
-  "main": "dist/litesand.min.js",
-  "module": "dist/litesand.esm.js",
+  "main": "dist/sand.min.js",
+  "module": "dist/sand.esm.js",
   "files": [
     "dist",
     "src",
