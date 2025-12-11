@@ -4,8 +4,18 @@
   "description": "Tiny HTML-driven reactive framework",
   "main": "dist/litesand.min.js",
   "module": "dist/litesand.esm.js",
-  "files": ["dist", "src", "README.md", "LICENSE"],
-  "keywords": ["framework","sand.js","reactive","frontend"],
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "framework",
+    "sand.js",
+    "reactive",
+    "frontend"
+  ],
   "author": "Sandip Mandal <mr_sandip@zohomail.in>",
   "license": "MIT",
   "repository": {
@@ -17,5 +27,12 @@
     "build": "rollup -c",
     "prebuild": "rimraf dist",
     "test": "vitest"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "rimraf": "^6.1.2",
+    "rollup": "^4.53.3"
   }
 }
