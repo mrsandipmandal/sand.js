@@ -1,5 +1,5 @@
 {
-  "name": "LiteSand-JS", // must be unique on npm
+  "name": "sandi-js", // must be unique on npm
   "version": "0.1.0",
   "description": "Tiny HTML-driven reactive framework",
   "main": "dist/litesand.min.js",           // UMD entry for browsers
