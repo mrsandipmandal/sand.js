@@ -35,4 +35,4 @@ Add interactivity directly in HTML using `s-` directives. Small, audit-friendly,
     <button @click="count++">+1</button>
     <span s-bind="textContent: count"></span>
 </div>
-
+```
