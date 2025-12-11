@@ -1,1 +1,13 @@
-<!DOCTYPE html><html><body><h1>sandiJS</h1></body></html>
+<!doctype html>
+<html>
+  <head><meta charset="utf-8"><title>sand.JS demo</title></head>
+  <body>
+    <div s-data="{ open: true, count: 0, items: ['x','y'] }" s-cloak>
+      <button @click="open = !open">Toggle</button>
+      <div s-show="open">Count: <span s-bind="textContent: count"></span></div>
+      <input type="text" s-model="name" placeholder="name"/>
+      <ul><li s-for="it in items" s-bind="textContent: it"></li></ul>
+    </div>
+    <script src="dist/sand.min.js" defer></script>
+  </body>
+</html>

@@ -1,1 +1,1 @@
-// event handler
+// event shorthand handled by runtime

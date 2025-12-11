@@ -1,1 +1,1 @@
-Issue template
+Please describe the issue.

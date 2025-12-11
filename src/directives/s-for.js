@@ -1,1 +1,1 @@
-// s-for directive
+// s-for handled by runtime

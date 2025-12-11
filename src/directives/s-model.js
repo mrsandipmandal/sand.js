@@ -1,1 +1,1 @@
-// s-model directive
+// s-model handled by runtime

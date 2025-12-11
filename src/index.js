@@ -1,2 +1,2 @@
-// entry point
-export const Sand = {};
+import { createReactive } from './reactivity.js';
+export { createReactive };

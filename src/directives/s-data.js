@@ -1,1 +1,1 @@
-// s-data directive
+// s-data handled by compiler/mount

@@ -1,1 +1,1 @@
-// s-bind directive
+// s-bind handled by runtime

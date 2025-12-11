@@ -1,1 +1,1 @@
-// s-show directive
+// s-show handled by runtime
