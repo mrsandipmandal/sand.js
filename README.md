@@ -1,6 +1,6 @@
 # sand.JS
 
-**sand.JS** — a tiny, zero-build, attribute-driven JavaScript micro-framework inspired by Alpine.js.  
+**sand.JS** — a tiny, zero-build, attribute-driven JavaScript micro-framework build by Sandip Mandal.  
 Add interactivity directly in HTML using `s-` directives. Small, audit-friendly, and friendly to server-rendered pages.
 
 - Size goal: **< 20KB gzipped**
