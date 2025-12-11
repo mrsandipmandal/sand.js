@@ -1,7 +1,6 @@
 {
-  "name": "sand.js",
-  "version": "0.1.0",
-  "type": "module",
+  "name": "sandi-js",
+  "version": "0.1.1",
   "description": "Tiny HTML-driven reactive framework",
   "main": "dist/sand.min.js",
   "module": "dist/sand.esm.js",
@@ -13,9 +12,10 @@
   ],
   "keywords": [
     "framework",
-    "sand.js",
     "reactive",
-    "frontend"
+    "frontend",
+    "sandi-js",
+    "sandip"
   ],
   "author": "Sandip Mandal <mr_sandip@zohomail.in>",
   "license": "MIT",
@@ -26,8 +26,7 @@
   "homepage": "https://github.com/mrsandipmandal/sand.js#readme",
   "scripts": {
     "build": "rollup -c",
-    "prebuild": "rimraf dist",
-    "test": "vitest"
+    "prebuild": "rimraf dist"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^29.0.0",
