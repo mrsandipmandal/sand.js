@@ -1,10 +1,10 @@
 {
-  "name": "sand.js",
+  "name": "sandi-js",
   "version": "0.1.0",
   "type": "module",
   "description": "Tiny HTML-driven reactive framework",
-  "main": "dist/sand.min.js",
-  "module": "dist/sand.esm.js",
+  "main": "dist/sandi.min.js",
+  "module": "dist/sandi.esm.js",
   "files": [
     "dist",
     "src",

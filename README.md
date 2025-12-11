@@ -27,3 +27,13 @@ Add interactivity directly in HTML using `s-` directives. Small, audit-friendly,
     <script src="https://unpkg.com/sand.js/dist/sand.min.js" defer></script>
   </body>
 </html>
+
+## Simple counter example
+
+```html
+<div s-data="{ count: 0 }">
+    <button @click="count++">+1</button>
+    <span s-bind="textContent: count"></span>
+</div>
+
+npm set //registry.npmjs.org/:_authToken="REMOVEDX3gV5MBrw6yFTtN0HfHBc4fbXTsXlB3dgBb0"
