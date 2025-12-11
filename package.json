@@ -1,9 +1,9 @@
 {
-  "name": "root.JS",                    // must be unique on npm
+  "name": "LiteSand-JS", // must be unique on npm
   "version": "0.1.0",
   "description": "Tiny HTML-driven reactive framework",
-  "main": "dist/sand.min.js",           // UMD entry for browsers
-  "module": "dist/sand.esm.js",         // ES module entry
+  "main": "dist/litesand.min.js",           // UMD entry for browsers
+  "module": "dist/litesand.esm.js",         // ES module entry
   "files": ["dist", "src", "README.md", "LICENSE"],
   "keywords": ["framework","sand.js","reactive","frontend"],
   "author": "Sandip Mandal <mr_sandip@zohomail.in>",
