@@ -1,5 +1,5 @@
 {
-  "name": "SandiJS",                    // must be unique on npm
+  "name": "root.JS",                    // must be unique on npm
   "version": "0.1.0",
   "description": "Tiny HTML-driven reactive framework",
   "main": "dist/sand.min.js",           // UMD entry for browsers
