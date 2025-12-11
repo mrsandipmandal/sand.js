@@ -1,13 +1,13 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import { terser } from "@rollup/plugin-terser";
+import terser from "@rollup/plugin-terser";
 
 export default [
   // ES Module Build
   {
     input: "src/index.js",
     output: {
-      file: "dist/litesand.esm.js",
+      file: "dist/sand.esm.js",
       format: "esm"
     },
     plugins: [
@@ -20,8 +20,8 @@ export default [
   {
     input: "src/index.js",
     output: {
-      file: "dist/litesand.min.js",
-      name: "LiteSand",
+      file: "dist/sand.min.js",
+      name: "SandJS",   // UMD global variable
       format: "umd"
     },
     plugins: [
