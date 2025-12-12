@@ -1,5 +1,3 @@
-// src/directives/index.js
-export { default as sData } from "./s-data.js";
 export { default as sInit } from "./s-init.js";
 export { default as sText } from "./s-text.js";
 export { default as sHtml } from "./s-html.js";

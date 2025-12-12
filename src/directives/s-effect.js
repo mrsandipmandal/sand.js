@@ -1,8 +1,6 @@
-// src/directives/s-effect.js
 import { safeEval } from "../utils.js";
-
 export default function sEffect(el, ctx) {
-  const expr = el.getAttribute("s-effect");
+  const expr = el.getAttribute("s-effect") ?? el.getAttribute("x-effect");
   if (!expr) return;
   if (!ctx || typeof ctx.__effect !== "function") return;
   if (el._s_effect_registered) return;

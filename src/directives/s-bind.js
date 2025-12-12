@@ -1,17 +1,13 @@
-// src/directives/s-bind.js
 import { safeEval } from "../utils.js";
-
 export default function sBind(el, ctx) {
-  const raw = el.getAttribute("s-bind");
+  const raw = el.getAttribute("s-bind") ?? el.getAttribute("x-bind");
   if (!raw) return;
-  const items = raw.split(",").map(str => str.trim()).filter(Boolean);
-
-  items.forEach(pair => {
+  raw.split(",").map(r => r.trim()).filter(Boolean).forEach(pair => {
     const parts = pair.split(":");
     if (parts.length < 2) return;
     const prop = parts.shift().trim();
-    const exp = parts.join(":").trim();
-    const val = safeEval(exp, ctx);
+    const expr = parts.join(":").trim();
+    const val = safeEval(expr, ctx);
     try { el[prop] = val; } catch { el.setAttribute(prop, val); }
   });
 }

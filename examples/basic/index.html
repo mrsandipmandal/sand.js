@@ -1,9 +1,31 @@
 <!doctype html>
-<html><body>
-<h2>Example</h2>
-<div s-data="{count:1}">
-  <button @click="count = count + 1">+1</button>
-  <span s-bind="textContent: count"></span>
-</div>
-<script src="../../dist/sand.min.js" defer></script>
-</body></html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>sandi-js test</title>
+  <script src="../../dist/sand.min.js" defer></script>
+</head>
+<body>
+  <div s-data="{ count: 0, name: 'Sandip' }" s-cloak>
+    <h2>Hello, <span s-bind="textContent: name"></span>!</h2>
+    <button @click="count++">Increase</button>
+    <button @click="count--">Decrease</button>
+    <p>Count: <span s-bind="textContent: count"></span></p>
+    <input s-model="name" placeholder="Change name">
+  </div>
+
+  <div s-data="{ open: false }">
+    <button @click="open = !open">Toggle</button>
+    <div s-show="open">Contents...</div>
+  </div>
+
+  <div s-data="{ search:'', items:['foo','bar','baz'], get filtered(){ return this.items.filter(i=>i.startsWith(this.search)); } }">
+    <input s-model="search" placeholder="Search...">
+    <ul>
+      <template s-for="item in filtered">
+        <li s-text="item"></li>
+      </template>
+    </ul>
+  </div>
+</body>
+</html>
