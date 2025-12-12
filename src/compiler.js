@@ -34,12 +34,14 @@ const Scheduler = (function () {
     queue.push(fn);
     if (!flushing) {
       flushing = true;
-      Promise.resolve().then(flush).catch(err => {
-        // ensure reset on error
-        flushing = false;
-        queue = [];
-        console.error("[sandi-js] scheduler error", err);
-      });
+      Promise.resolve()
+        .then(flush)
+        .catch((err) => {
+          // ensure reset on error
+          flushing = false;
+          queue = [];
+          console.error("[sandi-js] scheduler error", err);
+        });
     }
   }
 
@@ -64,12 +66,12 @@ const Scheduler = (function () {
 
 /* -------------------- Component mounting -------------------- */
 
-export function mount(root = document.body) {
+function mount(root = document.body) {
   // find all components (elements with s-data or x-data)
-  const selector = prefixes.map(p => `[${p}data]`).join(",");
+  const selector = prefixes.map((p) => `[${p}data]`).join(",");
   const components = root.querySelectorAll(selector);
 
-  components.forEach(el => {
+  components.forEach((el) => {
     // read expression from either prefix
     const exp = getAttrEither(el, "data") || "{}";
     const initial = safeEval(exp, {}) || {};
@@ -94,8 +96,10 @@ export function mount(root = document.body) {
     // schedule render when reactive deps change (batched)
     state.effect(() => {
       // sync shallow properties into ctx to make getPath work on ctx itself
-      Object.keys(state.proxy).forEach(k => {
-        try { ctx[k] = state.proxy[k]; } catch (e) {}
+      Object.keys(state.proxy).forEach((k) => {
+        try {
+          ctx[k] = state.proxy[k];
+        } catch (e) {}
       });
 
       // schedule the render for this component (batched)
@@ -106,7 +110,9 @@ export function mount(root = document.body) {
     removeAttrEither(el, "data");
 
     // remove cloak for component root & descendants immediately after mount
-    el.querySelectorAll("[s-cloak],[x-cloak]").forEach(n => n.removeAttribute("s-cloak"));
+    el.querySelectorAll("[s-cloak],[x-cloak]").forEach((n) =>
+      n.removeAttribute("s-cloak")
+    );
     if (el.hasAttribute("s-cloak") || el.hasAttribute("x-cloak")) {
       el.removeAttribute("s-cloak");
       el.removeAttribute("x-cloak");
@@ -118,7 +124,7 @@ export function mount(root = document.body) {
 
 function renderComponent(rootEl, ctx) {
   // walk the component subtree and apply directives
-  walk(rootEl, node => {
+  walk(rootEl, (node) => {
     if (node.nodeType !== 1) return; // element nodes only
 
     // s-ignore / x-ignore - skip entirely
@@ -145,27 +151,47 @@ function renderComponent(rootEl, ctx) {
 
     // s-text / x-text
     if (hasAttrEither(node, "text")) {
-      try { directives.sText && directives.sText(node, ctx); } catch(e){ console.warn('[sandi-js] s-text',e); }
+      try {
+        directives.sText && directives.sText(node, ctx);
+      } catch (e) {
+        console.warn("[sandi-js] s-text", e);
+      }
     }
 
     // s-html / x-html
     if (hasAttrEither(node, "html")) {
-      try { directives.sHtml && directives.sHtml(node, ctx); } catch(e){ console.warn('[sandi-js] s-html',e); }
+      try {
+        directives.sHtml && directives.sHtml(node, ctx);
+      } catch (e) {
+        console.warn("[sandi-js] s-html", e);
+      }
     }
 
     // s-show / x-show
     if (hasAttrEither(node, "show")) {
-      try { directives.sShow && directives.sShow(node, ctx); } catch(e){ console.warn('[sandi-js] s-show',e); }
+      try {
+        directives.sShow && directives.sShow(node, ctx);
+      } catch (e) {
+        console.warn("[sandi-js] s-show", e);
+      }
     }
 
     // s-bind / x-bind
     if (hasAttrEither(node, "bind")) {
-      try { directives.sBind && directives.sBind(node, ctx); } catch(e){ console.warn('[sandi-js] s-bind',e); }
+      try {
+        directives.sBind && directives.sBind(node, ctx);
+      } catch (e) {
+        console.warn("[sandi-js] s-bind", e);
+      }
     }
 
     // s-if / x-if (structural)
     if (hasAttrEither(node, "if")) {
-      try { directives.sIf && directives.sIf(node, ctx); } catch(e){ console.warn('[sandi-js] s-if',e); }
+      try {
+        directives.sIf && directives.sIf(node, ctx);
+      } catch (e) {
+        console.warn("[sandi-js] s-if", e);
+      }
       // after s-if, the node may be detached; if so, skip its children
       if (!node.isConnected) return true;
     }
@@ -173,7 +199,11 @@ function renderComponent(rootEl, ctx) {
     // s-for / x-for (if you have implemented; keep as separate directive)
     if (hasAttrEither(node, "for")) {
       if (directives.sFor) {
-        try { directives.sFor(node, ctx); } catch(e){ console.warn('[sandi-js] s-for',e); }
+        try {
+          directives.sFor(node, ctx);
+        } catch (e) {
+          console.warn("[sandi-js] s-for", e);
+        }
         // s-for may replace children; safe to continue walking
         if (!node.isConnected) return true;
       }
@@ -181,27 +211,47 @@ function renderComponent(rootEl, ctx) {
 
     // s-model / x-model
     if (hasAttrEither(node, "model")) {
-      try { directives.sModel && directives.sModel(node, ctx); } catch(e){ console.warn('[sandi-js] s-model',e); }
+      try {
+        directives.sModel && directives.sModel(node, ctx);
+      } catch (e) {
+        console.warn("[sandi-js] s-model", e);
+      }
     }
 
     // s-modelable / x-modelable
     if (hasAttrEither(node, "modelable")) {
-      try { directives.sModelable && directives.sModelable(node, ctx); } catch(e){ console.warn('[sandi-js] s-modelable',e); }
+      try {
+        directives.sModelable && directives.sModelable(node, ctx);
+      } catch (e) {
+        console.warn("[sandi-js] s-modelable", e);
+      }
     }
 
     // s-effect / x-effect
     if (hasAttrEither(node, "effect")) {
-      try { directives.sEffect && directives.sEffect(node, ctx); } catch(e){ console.warn('[sandi-js] s-effect',e); }
+      try {
+        directives.sEffect && directives.sEffect(node, ctx);
+      } catch (e) {
+        console.warn("[sandi-js] s-effect", e);
+      }
     }
 
     // s-teleport / x-teleport
     if (hasAttrEither(node, "teleport")) {
-      try { directives.sTeleport && directives.sTeleport(node, ctx); } catch(e){ console.warn('[sandi-js] s-teleport',e); }
+      try {
+        directives.sTeleport && directives.sTeleport(node, ctx);
+      } catch (e) {
+        console.warn("[sandi-js] s-teleport", e);
+      }
     }
 
     // s-transition / x-transition
     if (hasAttrEither(node, "transition")) {
-      try { directives.sTransition && directives.sTransition(node, ctx); } catch(e){ console.warn('[sandi-js] s-transition',e); }
+      try {
+        directives.sTransition && directives.sTransition(node, ctx);
+      } catch (e) {
+        console.warn("[sandi-js] s-transition", e);
+      }
     }
 
     // event shorthand: @click or @event  OR s-on:event / x-on:event
@@ -210,8 +260,16 @@ function renderComponent(rootEl, ctx) {
       const a = attrs[i];
       if (!a) continue;
       const name = a.name;
-      if (name.startsWith("@") || name.startsWith("s-on:") || name.startsWith("x-on:")) {
-        try { directives.sOn && directives.sOn(node, ctx, name); } catch(e){ console.warn('[sandi-js] s-on',e); }
+      if (
+        name.startsWith("@") ||
+        name.startsWith("s-on:") ||
+        name.startsWith("x-on:")
+      ) {
+        try {
+          directives.sOn && directives.sOn(node, ctx, name);
+        } catch (e) {
+          console.warn("[sandi-js] s-on", e);
+        }
       }
     }
 
