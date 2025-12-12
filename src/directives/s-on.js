@@ -1,18 +1,25 @@
-// event shorthand handled by runtime
+// src/directives/s-on.js
 import { safeEval } from "../utils.js";
 
 export default function sOn(el, ctx, attrName) {
-  let event = attrName.startsWith("@")
-    ? attrName.slice(1)
-    : attrName.slice(5);
+  if (!attrName) return;
+  let event;
+  if (attrName.startsWith("@")) event = attrName.slice(1);
+  else if (attrName.startsWith("s-on:")) event = attrName.slice(5);
+  else return;
 
-  const exp = el.getAttribute(attrName);
+  const code = el.getAttribute(attrName);
+  if (!code) return;
+
   const mark = `_s_on_${event}`;
+  if (el[mark]) return;
 
-  if (!el[mark]) {
-    el.addEventListener(event, e =>
-      safeEval(exp, Object.assign({}, ctx, { $event: e }))
-    );
-    el[mark] = true;
-  }
+  el.addEventListener(event, e => {
+    try {
+      safeEval(code, Object.assign(Object.create(ctx), { $event: e }));
+    } catch (err) {
+      console.warn('[sandi-js] s-on handler error', err);
+    }
+  });
+  el[mark] = true;
 }

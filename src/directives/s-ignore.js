@@ -1,3 +1,4 @@
+// src/directives/s-ignore.js
 export default function sIgnore(el) {
-  return el.hasAttribute("s-ignore");
+  try { return el && el.hasAttribute && el.hasAttribute("s-ignore"); } catch (e) { return false; }
 }

@@ -1,3 +1,3 @@
 export default function sCloak(el) {
-  el.removeAttribute("s-cloak");
+  if (el && el.hasAttribute && el.hasAttribute("s-cloak")) el.removeAttribute("s-cloak");
 }
